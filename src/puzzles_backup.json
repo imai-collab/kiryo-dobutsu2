@@ -1,0 +1,2410 @@
+[
+  {
+    "id": 1777110301579,
+    "name": "ドリル002",
+    "board": {
+      "2,0": {
+        "type": "K",
+        "enemy": true
+      },
+      "2,2": {
+        "type": "P",
+        "enemy": false
+      }
+    },
+    "hand": [
+      "G",
+      "S"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110546938,
+    "name": "ドリル003",
+    "board": {
+      "4,1": {
+        "type": "P",
+        "enemy": true
+      },
+      "3,1": {
+        "type": "P",
+        "enemy": true
+      },
+      "4,2": {
+        "type": "K",
+        "enemy": true
+      },
+      "4,4": {
+        "type": "P",
+        "enemy": false
+      }
+    },
+    "hand": [
+      "G",
+      "N"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110546939,
+    "name": "ドリル004",
+    "board": {
+      "3,0": {
+        "type": "K",
+        "enemy": true
+      },
+      "4,2": {
+        "type": "P",
+        "enemy": false
+      },
+      "3,2": {
+        "type": "P",
+        "enemy": false
+      }
+    },
+    "hand": [
+      "G"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861053,
+    "name": "006",
+    "board": {
+      "4,2": {
+        "type": "K",
+        "enemy": true
+      },
+      "3,3": {
+        "type": "P",
+        "enemy": false
+      },
+      "4,3": {
+        "type": "P",
+        "enemy": true
+      }
+    },
+    "hand": [
+      "G"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861054,
+    "name": "007",
+    "board": {
+      "2,0": {
+        "type": "K",
+        "enemy": true
+      },
+      "3,0": {
+        "type": "P",
+        "enemy": true
+      },
+      "1,2": {
+        "type": "P",
+        "enemy": false
+      },
+      "3,2": {
+        "type": "P",
+        "enemy": false
+      }
+    },
+    "hand": [
+      "G"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861055,
+    "name": "008",
+    "board": {
+      "4,2": {
+        "type": "K",
+        "enemy": true
+      },
+      "4,1": {
+        "type": "P",
+        "enemy": true
+      },
+      "3,3": {
+        "type": "P",
+        "enemy": false
+      },
+      "4,4": {
+        "type": "P",
+        "enemy": false
+      }
+    },
+    "hand": [
+      "G"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861056,
+    "name": "010",
+    "board": {
+      "2,0": {
+        "type": "K",
+        "enemy": true
+      },
+      "4,1": {
+        "type": "R",
+        "enemy": false
+      }
+    },
+    "hand": [
+      "G"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861057,
+    "name": "011",
+    "board": {
+      "3,0": {
+        "type": "K",
+        "enemy": true
+      },
+      "2,3": {
+        "type": "N",
+        "enemy": false
+      }
+    },
+    "hand": [
+      "G"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861058,
+    "name": "012",
+    "board": {
+      "1,0": {
+        "type": "K",
+        "enemy": true
+      },
+      "1,2": {
+        "type": "G",
+        "enemy": false
+      }
+    },
+    "hand": [
+      "G"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861059,
+    "name": "014",
+    "board": {
+      "4,2": {
+        "type": "K",
+        "enemy": true
+      },
+      "4,1": {
+        "type": "P",
+        "enemy": true
+      },
+      "2,2": {
+        "type": "S",
+        "enemy": false
+      }
+    },
+    "hand": [
+      "G"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861060,
+    "name": "015",
+    "board": {
+      "4,2": {
+        "type": "K",
+        "enemy": true
+      },
+      "2,1": {
+        "type": "S",
+        "enemy": false
+      },
+      "4,3": {
+        "type": "P",
+        "enemy": true
+      },
+      "3,4": {
+        "type": "P",
+        "enemy": false
+      }
+    },
+    "hand": [
+      "G"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861061,
+    "name": "016",
+    "board": {
+      "4,2": {
+        "type": "K",
+        "enemy": true
+      },
+      "3,0": {
+        "type": "S",
+        "enemy": false
+      },
+      "3,2": {
+        "type": "P",
+        "enemy": true
+      },
+      "3,4": {
+        "type": "P",
+        "enemy": false
+      },
+      "4,4": {
+        "type": "P",
+        "enemy": false
+      }
+    },
+    "hand": [
+      "G"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861062,
+    "name": "018",
+    "board": {
+      "4,0": {
+        "type": "K",
+        "enemy": true
+      },
+      "1,0": {
+        "type": "R",
+        "enemy": true
+      },
+      "3,1": {
+        "type": "R",
+        "enemy": false
+      }
+    },
+    "hand": [
+      "G"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861063,
+    "name": "019",
+    "board": {
+      "4,0": {
+        "type": "K",
+        "enemy": true
+      },
+      "2,1": {
+        "type": "R",
+        "enemy": false
+      },
+      "4,3": {
+        "type": "R",
+        "enemy": true
+      }
+    },
+    "hand": [
+      "G"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861064,
+    "name": "020",
+    "board": {
+      "4,0": {
+        "type": "K",
+        "enemy": true
+      },
+      "2,1": {
+        "type": "R",
+        "enemy": false
+      },
+      "3,3": {
+        "type": "R",
+        "enemy": true
+      }
+    },
+    "hand": [
+      "G"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861065,
+    "name": "022",
+    "board": {
+      "2,1": {
+        "type": "K",
+        "enemy": true
+      },
+      "4,0": {
+        "type": "R",
+        "enemy": false
+      },
+      "3,1": {
+        "type": "S",
+        "enemy": true
+      },
+      "3,2": {
+        "type": "P",
+        "enemy": true
+      },
+      "1,3": {
+        "type": "P",
+        "enemy": false
+      }
+    },
+    "hand": [
+      "G"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861066,
+    "name": "023",
+    "board": {
+      "2,1": {
+        "type": "K",
+        "enemy": true
+      },
+      "4,0": {
+        "type": "R",
+        "enemy": false
+      },
+      "3,1": {
+        "type": "S",
+        "enemy": true
+      },
+      "1,2": {
+        "type": "P",
+        "enemy": false
+      },
+      "3,2": {
+        "type": "P",
+        "enemy": true
+      },
+      "2,3": {
+        "type": "P",
+        "enemy": false
+      },
+      "0,1": {
+        "type": "B",
+        "enemy": true
+      }
+    },
+    "hand": [
+      "G"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861067,
+    "name": "024",
+    "board": {
+      "2,1": {
+        "type": "K",
+        "enemy": true
+      },
+      "1,1": {
+        "type": "P",
+        "enemy": true
+      },
+      "2,2": {
+        "type": "S",
+        "enemy": true
+      },
+      "1,3": {
+        "type": "P",
+        "enemy": false
+      },
+      "3,0": {
+        "type": "R",
+        "enemy": false
+      }
+    },
+    "hand": [
+      "G"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861068,
+    "name": "026",
+    "board": {
+      "2,0": {
+        "type": "K",
+        "enemy": true
+      },
+      "3,0": {
+        "type": "N",
+        "enemy": true
+      },
+      "1,1": {
+        "type": "G",
+        "enemy": true
+      },
+      "3,2": {
+        "type": "PB",
+        "enemy": false
+      }
+    },
+    "hand": [
+      "G"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861069,
+    "name": "027",
+    "board": {
+      "2,0": {
+        "type": "K",
+        "enemy": true
+      },
+      "3,0": {
+        "type": "N",
+        "enemy": true
+      },
+      "3,2": {
+        "type": "PB",
+        "enemy": false
+      },
+      "2,2": {
+        "type": "G",
+        "enemy": true
+      }
+    },
+    "hand": [
+      "G"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861070,
+    "name": "028",
+    "board": {
+      "2,0": {
+        "type": "K",
+        "enemy": true
+      },
+      "3,0": {
+        "type": "N",
+        "enemy": true
+      },
+      "1,2": {
+        "type": "R",
+        "enemy": true
+      },
+      "3,2": {
+        "type": "PB",
+        "enemy": false
+      }
+    },
+    "hand": [
+      "G"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861071,
+    "name": "030",
+    "board": {
+      "4,1": {
+        "type": "PR",
+        "enemy": false
+      },
+      "2,2": {
+        "type": "K",
+        "enemy": true
+      },
+      "3,3": {
+        "type": "P",
+        "enemy": true
+      },
+      "1,4": {
+        "type": "P",
+        "enemy": false
+      }
+    },
+    "hand": [
+      "G"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861072,
+    "name": "031",
+    "board": {
+      "4,1": {
+        "type": "PB",
+        "enemy": false
+      },
+      "2,2": {
+        "type": "K",
+        "enemy": true
+      },
+      "1,3": {
+        "type": "P",
+        "enemy": false
+      },
+      "2,3": {
+        "type": "P",
+        "enemy": true
+      },
+      "3,3": {
+        "type": "P",
+        "enemy": true
+      }
+    },
+    "hand": [
+      "G"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861073,
+    "name": "032",
+    "board": {
+      "4,1": {
+        "type": "PR",
+        "enemy": false
+      },
+      "1,2": {
+        "type": "P",
+        "enemy": true
+      },
+      "2,2": {
+        "type": "K",
+        "enemy": true
+      },
+      "2,3": {
+        "type": "P",
+        "enemy": true
+      },
+      "1,4": {
+        "type": "P",
+        "enemy": false
+      }
+    },
+    "hand": [
+      "G"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861074,
+    "name": "034",
+    "board": {
+      "4,1": {
+        "type": "PB",
+        "enemy": false
+      },
+      "2,1": {
+        "type": "P",
+        "enemy": true
+      },
+      "2,2": {
+        "type": "K",
+        "enemy": true
+      },
+      "1,3": {
+        "type": "P",
+        "enemy": false
+      },
+      "3,3": {
+        "type": "P",
+        "enemy": true
+      }
+    },
+    "hand": [
+      "G"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861075,
+    "name": "035",
+    "board": {
+      "4,1": {
+        "type": "PB",
+        "enemy": false
+      },
+      "1,1": {
+        "type": "N",
+        "enemy": true
+      },
+      "2,1": {
+        "type": "P",
+        "enemy": true
+      },
+      "2,2": {
+        "type": "K",
+        "enemy": true
+      },
+      "3,3": {
+        "type": "P",
+        "enemy": true
+      },
+      "1,4": {
+        "type": "P",
+        "enemy": false
+      }
+    },
+    "hand": [
+      "G"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861076,
+    "name": "036",
+    "board": {
+      "4,1": {
+        "type": "PB",
+        "enemy": false
+      },
+      "1,2": {
+        "type": "P",
+        "enemy": true
+      },
+      "2,2": {
+        "type": "K",
+        "enemy": true
+      },
+      "1,3": {
+        "type": "N",
+        "enemy": false
+      },
+      "3,3": {
+        "type": "P",
+        "enemy": true
+      },
+      "1,4": {
+        "type": "P",
+        "enemy": false
+      }
+    },
+    "hand": [
+      "G"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861077,
+    "name": "038",
+    "board": {
+      "3,0": {
+        "type": "N",
+        "enemy": true
+      },
+      "2,1": {
+        "type": "K",
+        "enemy": true
+      },
+      "3,1": {
+        "type": "P",
+        "enemy": true
+      },
+      "1,2": {
+        "type": "G",
+        "enemy": true
+      },
+      "3,3": {
+        "type": "S",
+        "enemy": false
+      },
+      "0,2": {
+        "type": "B",
+        "enemy": false
+      }
+    },
+    "hand": [
+      "G"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861078,
+    "name": "039",
+    "board": {
+      "3,0": {
+        "type": "N",
+        "enemy": true
+      },
+      "2,1": {
+        "type": "K",
+        "enemy": true
+      },
+      "1,2": {
+        "type": "P",
+        "enemy": true
+      },
+      "3,3": {
+        "type": "S",
+        "enemy": false
+      },
+      "0,2": {
+        "type": "B",
+        "enemy": false
+      },
+      "1,0": {
+        "type": "G",
+        "enemy": true
+      }
+    },
+    "hand": [
+      "G"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861079,
+    "name": "040",
+    "board": {
+      "2,1": {
+        "type": "K",
+        "enemy": true
+      },
+      "3,1": {
+        "type": "P",
+        "enemy": false
+      },
+      "4,2": {
+        "type": "N",
+        "enemy": true
+      },
+      "3,3": {
+        "type": "S",
+        "enemy": false
+      },
+      "0,2": {
+        "type": "B",
+        "enemy": false
+      },
+      "1,0": {
+        "type": "G",
+        "enemy": true
+      }
+    },
+    "hand": [
+      "G"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861080,
+    "name": "042",
+    "board": {
+      "4,0": {
+        "type": "L",
+        "enemy": true
+      },
+      "2,2": {
+        "type": "S",
+        "enemy": false
+      },
+      "3,2": {
+        "type": "K",
+        "enemy": true
+      },
+      "4,2": {
+        "type": "P",
+        "enemy": true
+      },
+      "1,3": {
+        "type": "G",
+        "enemy": false
+      },
+      "3,4": {
+        "type": "B",
+        "enemy": true
+      },
+      "4,4": {
+        "type": "P",
+        "enemy": false
+      }
+    },
+    "hand": [
+      "G"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861081,
+    "name": "043",
+    "board": {
+      "4,1": {
+        "type": "P",
+        "enemy": true
+      },
+      "2,2": {
+        "type": "S",
+        "enemy": false
+      },
+      "3,2": {
+        "type": "K",
+        "enemy": true
+      },
+      "1,3": {
+        "type": "G",
+        "enemy": false
+      },
+      "2,4": {
+        "type": "B",
+        "enemy": true
+      },
+      "4,4": {
+        "type": "P",
+        "enemy": false
+      }
+    },
+    "hand": [
+      "G"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861082,
+    "name": "044",
+    "board": {
+      "4,1": {
+        "type": "L",
+        "enemy": true
+      },
+      "2,2": {
+        "type": "S",
+        "enemy": false
+      },
+      "3,2": {
+        "type": "K",
+        "enemy": true
+      },
+      "4,2": {
+        "type": "B",
+        "enemy": true
+      },
+      "1,3": {
+        "type": "G",
+        "enemy": false
+      },
+      "4,3": {
+        "type": "P",
+        "enemy": true
+      }
+    },
+    "hand": [
+      "G"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861083,
+    "name": "046",
+    "board": {
+      "3,0": {
+        "type": "N",
+        "enemy": true
+      },
+      "4,1": {
+        "type": "L",
+        "enemy": true
+      },
+      "2,2": {
+        "type": "S",
+        "enemy": false
+      },
+      "4,2": {
+        "type": "K",
+        "enemy": true
+      },
+      "4,4": {
+        "type": "P",
+        "enemy": false
+      },
+      "2,4": {
+        "type": "B",
+        "enemy": true
+      }
+    },
+    "hand": [
+      "G"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861084,
+    "name": "047",
+    "board": {
+      "1,0": {
+        "type": "B",
+        "enemy": true
+      },
+      "3,0": {
+        "type": "N",
+        "enemy": true
+      },
+      "4,0": {
+        "type": "L",
+        "enemy": true
+      },
+      "2,2": {
+        "type": "S",
+        "enemy": false
+      },
+      "4,2": {
+        "type": "K",
+        "enemy": true
+      },
+      "1,4": {
+        "type": "B",
+        "enemy": false
+      },
+      "4,4": {
+        "type": "P",
+        "enemy": false
+      }
+    },
+    "hand": [
+      "G"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861085,
+    "name": "048",
+    "board": {
+      "2,0": {
+        "type": "B",
+        "enemy": false
+      },
+      "3,0": {
+        "type": "N",
+        "enemy": true
+      },
+      "3,1": {
+        "type": "P",
+        "enemy": true
+      },
+      "4,1": {
+        "type": "L",
+        "enemy": true
+      },
+      "4,2": {
+        "type": "K",
+        "enemy": true
+      },
+      "2,3": {
+        "type": "S",
+        "enemy": false
+      },
+      "3,4": {
+        "type": "B",
+        "enemy": true
+      },
+      "4,4": {
+        "type": "P",
+        "enemy": false
+      }
+    },
+    "hand": [
+      "G"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861086,
+    "name": "050",
+    "board": {
+      "4,0": {
+        "type": "L",
+        "enemy": true
+      },
+      "2,1": {
+        "type": "PR",
+        "enemy": false
+      },
+      "3,1": {
+        "type": "S",
+        "enemy": true
+      },
+      "4,1": {
+        "type": "K",
+        "enemy": true
+      },
+      "2,2": {
+        "type": "N",
+        "enemy": true
+      },
+      "3,2": {
+        "type": "P",
+        "enemy": true
+      },
+      "4,3": {
+        "type": "P",
+        "enemy": false
+      }
+    },
+    "hand": [
+      "G"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861087,
+    "name": "051",
+    "board": {
+      "4,0": {
+        "type": "PR",
+        "enemy": false
+      },
+      "4,1": {
+        "type": "S",
+        "enemy": true
+      },
+      "4,2": {
+        "type": "K",
+        "enemy": true
+      },
+      "3,3": {
+        "type": "P",
+        "enemy": false
+      },
+      "4,3": {
+        "type": "P",
+        "enemy": true
+      }
+    },
+    "hand": [
+      "G"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861088,
+    "name": "052",
+    "board": {
+      "4,0": {
+        "type": "PP",
+        "enemy": false
+      },
+      "2,2": {
+        "type": "PR",
+        "enemy": false
+      },
+      "3,2": {
+        "type": "S",
+        "enemy": true
+      },
+      "4,2": {
+        "type": "K",
+        "enemy": true
+      },
+      "4,3": {
+        "type": "P",
+        "enemy": true
+      },
+      "2,4": {
+        "type": "B",
+        "enemy": true
+      }
+    },
+    "hand": [
+      "G"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861089,
+    "name": "054",
+    "board": {
+      "1,4": {
+        "type": "B",
+        "enemy": false
+      },
+      "2,0": {
+        "type": "P",
+        "enemy": true
+      },
+      "4,1": {
+        "type": "K",
+        "enemy": true
+      },
+      "4,2": {
+        "type": "P",
+        "enemy": true
+      },
+      "3,2": {
+        "type": "S",
+        "enemy": true
+      },
+      "2,2": {
+        "type": "G",
+        "enemy": false
+      }
+    },
+    "hand": [
+      "G"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861090,
+    "name": "055",
+    "board": {
+      "4,0": {
+        "type": "R",
+        "enemy": false
+      },
+      "4,2": {
+        "type": "K",
+        "enemy": true
+      },
+      "4,4": {
+        "type": "P",
+        "enemy": false
+      },
+      "4,1": {
+        "type": "S",
+        "enemy": true
+      },
+      "3,1": {
+        "type": "G",
+        "enemy": false
+      }
+    },
+    "hand": [
+      "G"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861091,
+    "name": "056",
+    "board": {
+      "3,1": {
+        "type": "G",
+        "enemy": false
+      },
+      "1,2": {
+        "type": "P",
+        "enemy": true
+      },
+      "2,2": {
+        "type": "K",
+        "enemy": true
+      },
+      "3,2": {
+        "type": "S",
+        "enemy": true
+      },
+      "4,2": {
+        "type": "PR",
+        "enemy": false
+      },
+      "2,3": {
+        "type": "P",
+        "enemy": true
+      },
+      "1,4": {
+        "type": "P",
+        "enemy": false
+      }
+    },
+    "hand": [
+      "G"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861092,
+    "name": "058",
+    "board": {
+      "3,4": {
+        "type": "P",
+        "enemy": false
+      },
+      "4,4": {
+        "type": "P",
+        "enemy": false
+      },
+      "4,0": {
+        "type": "PB",
+        "enemy": false
+      },
+      "3,2": {
+        "type": "K",
+        "enemy": true
+      },
+      "4,2": {
+        "type": "P",
+        "enemy": true
+      },
+      "2,1": {
+        "type": "N",
+        "enemy": true
+      },
+      "1,1": {
+        "type": "S",
+        "enemy": true
+      },
+      "1,0": {
+        "type": "B",
+        "enemy": false
+      }
+    },
+    "hand": [
+      "G"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861093,
+    "name": "059",
+    "board": {
+      "1,0": {
+        "type": "B",
+        "enemy": false
+      },
+      "2,1": {
+        "type": "G",
+        "enemy": true
+      },
+      "3,2": {
+        "type": "K",
+        "enemy": true
+      },
+      "3,3": {
+        "type": "S",
+        "enemy": true
+      },
+      "4,2": {
+        "type": "P",
+        "enemy": true
+      },
+      "4,4": {
+        "type": "P",
+        "enemy": false
+      },
+      "1,3": {
+        "type": "PB",
+        "enemy": false
+      }
+    },
+    "hand": [
+      "G"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861094,
+    "name": "060",
+    "board": {
+      "3,2": {
+        "type": "K",
+        "enemy": true
+      },
+      "3,3": {
+        "type": "S",
+        "enemy": true
+      },
+      "4,4": {
+        "type": "P",
+        "enemy": false
+      },
+      "1,0": {
+        "type": "B",
+        "enemy": false
+      },
+      "2,1": {
+        "type": "G",
+        "enemy": true
+      },
+      "1,3": {
+        "type": "PB",
+        "enemy": false
+      },
+      "4,1": {
+        "type": "S",
+        "enemy": true
+      }
+    },
+    "hand": [
+      "G"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861095,
+    "name": "062",
+    "board": {
+      "3,0": {
+        "type": "S",
+        "enemy": true
+      },
+      "4,3": {
+        "type": "S",
+        "enemy": true
+      },
+      "4,4": {
+        "type": "L",
+        "enemy": false
+      },
+      "1,0": {
+        "type": "PB",
+        "enemy": false
+      },
+      "4,2": {
+        "type": "K",
+        "enemy": true
+      }
+    },
+    "hand": [
+      "G"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861096,
+    "name": "063",
+    "board": {
+      "3,0": {
+        "type": "B",
+        "enemy": true
+      },
+      "4,3": {
+        "type": "S",
+        "enemy": true
+      },
+      "4,4": {
+        "type": "L",
+        "enemy": false
+      },
+      "4,2": {
+        "type": "K",
+        "enemy": true
+      },
+      "2,3": {
+        "type": "PR",
+        "enemy": false
+      },
+      "2,1": {
+        "type": "P",
+        "enemy": true
+      }
+    },
+    "hand": [
+      "G"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861097,
+    "name": "064",
+    "board": {
+      "4,4": {
+        "type": "L",
+        "enemy": false
+      },
+      "4,2": {
+        "type": "S",
+        "enemy": true
+      },
+      "4,1": {
+        "type": "K",
+        "enemy": true
+      },
+      "2,4": {
+        "type": "PB",
+        "enemy": false
+      },
+      "3,2": {
+        "type": "P",
+        "enemy": false
+      },
+      "2,0": {
+        "type": "R",
+        "enemy": true
+      }
+    },
+    "hand": [
+      "G"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861103,
+    "name": "072",
+    "board": {
+      "3,0": {
+        "type": "N",
+        "enemy": true
+      },
+      "4,0": {
+        "type": "L",
+        "enemy": true
+      },
+      "1,1": {
+        "type": "R",
+        "enemy": false
+      },
+      "2,1": {
+        "type": "G",
+        "enemy": false
+      },
+      "4,1": {
+        "type": "K",
+        "enemy": true
+      },
+      "0,2": {
+        "type": "B",
+        "enemy": true
+      },
+      "3,2": {
+        "type": "P",
+        "enemy": true
+      },
+      "4,2": {
+        "type": "S",
+        "enemy": true
+      },
+      "4,4": {
+        "type": "L",
+        "enemy": false
+      }
+    },
+    "hand": [],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861104,
+    "name": "074",
+    "board": {
+      "3,0": {
+        "type": "S",
+        "enemy": false
+      },
+      "3,2": {
+        "type": "P",
+        "enemy": true
+      },
+      "4,2": {
+        "type": "K",
+        "enemy": true
+      },
+      "3,4": {
+        "type": "P",
+        "enemy": false
+      }
+    },
+    "hand": [
+      "R"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861105,
+    "name": "075",
+    "board": {
+      "4,1": {
+        "type": "K",
+        "enemy": true
+      },
+      "3,2": {
+        "type": "P",
+        "enemy": true
+      },
+      "1,3": {
+        "type": "B",
+        "enemy": false
+      }
+    },
+    "hand": [
+      "R"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861106,
+    "name": "076",
+    "board": {
+      "3,2": {
+        "type": "P",
+        "enemy": true
+      },
+      "4,2": {
+        "type": "K",
+        "enemy": true
+      },
+      "3,3": {
+        "type": "N",
+        "enemy": false
+      },
+      "3,4": {
+        "type": "P",
+        "enemy": false
+      }
+    },
+    "hand": [
+      "R"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861107,
+    "name": "078",
+    "board": {
+      "4,0": {
+        "type": "R",
+        "enemy": false
+      },
+      "1,1": {
+        "type": "G",
+        "enemy": true
+      },
+      "3,1": {
+        "type": "K",
+        "enemy": true
+      },
+      "2,2": {
+        "type": "P",
+        "enemy": true
+      },
+      "3,2": {
+        "type": "P",
+        "enemy": true
+      }
+    },
+    "hand": [
+      "R"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861108,
+    "name": "079",
+    "board": {
+      "3,2": {
+        "type": "P",
+        "enemy": true
+      },
+      "4,3": {
+        "type": "K",
+        "enemy": true
+      },
+      "3,4": {
+        "type": "R",
+        "enemy": false
+      }
+    },
+    "hand": [
+      "R"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861109,
+    "name": "080",
+    "board": {
+      "3,2": {
+        "type": "P",
+        "enemy": true
+      },
+      "4,2": {
+        "type": "P",
+        "enemy": true
+      },
+      "3,3": {
+        "type": "K",
+        "enemy": true
+      },
+      "2,4": {
+        "type": "R",
+        "enemy": false
+      }
+    },
+    "hand": [
+      "R"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861110,
+    "name": "082",
+    "board": {
+      "2,2": {
+        "type": "PB",
+        "enemy": false
+      },
+      "4,3": {
+        "type": "K",
+        "enemy": true
+      },
+      "3,4": {
+        "type": "S",
+        "enemy": true
+      }
+    },
+    "hand": [
+      "R"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861111,
+    "name": "083",
+    "board": {
+      "4,1": {
+        "type": "PB",
+        "enemy": false
+      },
+      "3,3": {
+        "type": "P",
+        "enemy": true
+      },
+      "4,3": {
+        "type": "K",
+        "enemy": true
+      },
+      "3,4": {
+        "type": "S",
+        "enemy": true
+      }
+    },
+    "hand": [
+      "R"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861112,
+    "name": "084",
+    "board": {
+      "4,1": {
+        "type": "PB",
+        "enemy": false
+      },
+      "3,3": {
+        "type": "K",
+        "enemy": true
+      },
+      "3,4": {
+        "type": "P",
+        "enemy": true
+      },
+      "4,4": {
+        "type": "P",
+        "enemy": true
+      }
+    },
+    "hand": [
+      "R"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861113,
+    "name": "086",
+    "board": {
+      "2,1": {
+        "type": "S",
+        "enemy": false
+      },
+      "3,1": {
+        "type": "K",
+        "enemy": true
+      },
+      "2,2": {
+        "type": "P",
+        "enemy": true
+      },
+      "4,2": {
+        "type": "P",
+        "enemy": false
+      }
+    },
+    "hand": [
+      "R"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861114,
+    "name": "087",
+    "board": {
+      "2,1": {
+        "type": "P",
+        "enemy": true
+      },
+      "3,2": {
+        "type": "K",
+        "enemy": true
+      },
+      "4,2": {
+        "type": "S",
+        "enemy": false
+      },
+      "3,4": {
+        "type": "N",
+        "enemy": false
+      }
+    },
+    "hand": [
+      "R"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861115,
+    "name": "088",
+    "board": {
+      "2,1": {
+        "type": "P",
+        "enemy": true
+      },
+      "3,1": {
+        "type": "S",
+        "enemy": false
+      },
+      "4,1": {
+        "type": "P",
+        "enemy": true
+      },
+      "3,2": {
+        "type": "K",
+        "enemy": true
+      },
+      "3,4": {
+        "type": "P",
+        "enemy": false
+      }
+    },
+    "hand": [
+      "R"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861116,
+    "name": "090",
+    "board": {
+      "3,0": {
+        "type": "PP",
+        "enemy": false
+      },
+      "2,1": {
+        "type": "PR",
+        "enemy": false
+      },
+      "3,1": {
+        "type": "S",
+        "enemy": true
+      },
+      "4,1": {
+        "type": "K",
+        "enemy": true
+      },
+      "3,2": {
+        "type": "P",
+        "enemy": true
+      },
+      "1,3": {
+        "type": "PB",
+        "enemy": true
+      },
+      "4,3": {
+        "type": "P",
+        "enemy": true
+      }
+    },
+    "hand": [
+      "R"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861117,
+    "name": "091",
+    "board": {
+      "3,0": {
+        "type": "PR",
+        "enemy": false
+      },
+      "3,1": {
+        "type": "S",
+        "enemy": true
+      },
+      "4,1": {
+        "type": "PP",
+        "enemy": false
+      },
+      "3,2": {
+        "type": "K",
+        "enemy": true
+      },
+      "2,3": {
+        "type": "P",
+        "enemy": true
+      },
+      "3,3": {
+        "type": "P",
+        "enemy": true
+      }
+    },
+    "hand": [
+      "R"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861118,
+    "name": "092",
+    "board": {
+      "2,0": {
+        "type": "PR",
+        "enemy": false
+      },
+      "2,1": {
+        "type": "S",
+        "enemy": true
+      },
+      "2,2": {
+        "type": "K",
+        "enemy": true
+      },
+      "1,3": {
+        "type": "P",
+        "enemy": false
+      },
+      "3,3": {
+        "type": "P",
+        "enemy": true
+      },
+      "2,4": {
+        "type": "P",
+        "enemy": false
+      }
+    },
+    "hand": [
+      "R"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861122,
+    "name": "098",
+    "board": {
+      "3,0": {
+        "type": "G",
+        "enemy": false
+      },
+      "4,1": {
+        "type": "L",
+        "enemy": true
+      },
+      "0,2": {
+        "type": "R",
+        "enemy": false
+      },
+      "4,2": {
+        "type": "P",
+        "enemy": true
+      },
+      "2,3": {
+        "type": "P",
+        "enemy": true
+      },
+      "2,2": {
+        "type": "S",
+        "enemy": true
+      },
+      "3,2": {
+        "type": "K",
+        "enemy": true
+      },
+      "4,4": {
+        "type": "P",
+        "enemy": false
+      }
+    },
+    "hand": [
+      "R"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861123,
+    "name": "099",
+    "board": {
+      "4,0": {
+        "type": "S",
+        "enemy": false
+      },
+      "3,2": {
+        "type": "P",
+        "enemy": true
+      },
+      "4,2": {
+        "type": "K",
+        "enemy": true
+      },
+      "3,3": {
+        "type": "G",
+        "enemy": true
+      },
+      "4,4": {
+        "type": "P",
+        "enemy": false
+      },
+      "2,4": {
+        "type": "B",
+        "enemy": false
+      }
+    },
+    "hand": [
+      "R"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861124,
+    "name": "100",
+    "board": {
+      "4,0": {
+        "type": "G",
+        "enemy": false
+      },
+      "4,2": {
+        "type": "K",
+        "enemy": true
+      },
+      "3,4": {
+        "type": "P",
+        "enemy": false
+      },
+      "3,2": {
+        "type": "P",
+        "enemy": true
+      },
+      "3,1": {
+        "type": "G",
+        "enemy": true
+      },
+      "2,0": {
+        "type": "B",
+        "enemy": false
+      }
+    },
+    "hand": [
+      "R"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861125,
+    "name": "102",
+    "board": {
+      "3,1": {
+        "type": "PR",
+        "enemy": false
+      },
+      "2,2": {
+        "type": "G",
+        "enemy": false
+      },
+      "3,2": {
+        "type": "S",
+        "enemy": true
+      },
+      "3,3": {
+        "type": "K",
+        "enemy": true
+      },
+      "3,4": {
+        "type": "P",
+        "enemy": true
+      },
+      "4,4": {
+        "type": "P",
+        "enemy": true
+      }
+    },
+    "hand": [
+      "R"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861126,
+    "name": "103",
+    "board": {
+      "1,1": {
+        "type": "PB",
+        "enemy": false
+      },
+      "1,0": {
+        "type": "P",
+        "enemy": true
+      },
+      "3,2": {
+        "type": "K",
+        "enemy": true
+      },
+      "3,1": {
+        "type": "P",
+        "enemy": true
+      },
+      "4,1": {
+        "type": "L",
+        "enemy": true
+      },
+      "3,3": {
+        "type": "S",
+        "enemy": true
+      },
+      "4,3": {
+        "type": "P",
+        "enemy": true
+      },
+      "3,4": {
+        "type": "L",
+        "enemy": false
+      }
+    },
+    "hand": [
+      "R"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  },
+  {
+    "id": 1777110861127,
+    "name": "104",
+    "board": {
+      "3,4": {
+        "type": "L",
+        "enemy": false
+      },
+      "3,1": {
+        "type": "K",
+        "enemy": true
+      },
+      "2,3": {
+        "type": "PR",
+        "enemy": false
+      },
+      "3,2": {
+        "type": "S",
+        "enemy": true
+      },
+      "4,0": {
+        "type": "L",
+        "enemy": true
+      },
+      "3,0": {
+        "type": "P",
+        "enemy": true
+      },
+      "1,0": {
+        "type": "P",
+        "enemy": true
+      },
+      "4,2": {
+        "type": "P",
+        "enemy": true
+      }
+    },
+    "hand": [
+      "R"
+    ],
+    "solution": {
+      "from": null,
+      "to": "0,0",
+      "pieceType": "P"
+    }
+  }
+]
