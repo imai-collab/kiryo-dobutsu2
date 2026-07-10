@@ -25,6 +25,15 @@ interface Problem {
 
 import defaultPuzzles from "./puzzles.json";
 
+const unpromotedToPromoted: Record<string, string> = {
+  P: "PP",
+  L: "PL",
+  N: "PN",
+  S: "PS",
+  B: "PB",
+  R: "PR",
+};
+
 const MOVES: Record<string, { dc: number; dr: number; slide?: boolean }[]> = {
   P: [{ dc: 0, dr: -1 }],
   L: [{ dc: 0, dr: -1, slide: true }],
@@ -298,14 +307,16 @@ const PieceView = ({
 
   return (
     <div
-      className={`relative flex flex-col items-center justify-center w-[90%] aspect-square rounded-[10px] border-[3px] transition-all select-none
+      className={`relative flex flex-col items-center justify-center w-[90%] aspect-square rounded-[10px] transition-all select-none
        ${
          type === "K"
-           ? "bg-[#FFF4D2] border-[#D9A300] shadow-[0_3px_0_#B38600] text-[#806000]"
-           : "bg-[#FFFFFF] border-[#634C32] shadow-[0_3px_0_#D0B99B]"
+           ? enemy
+             ? "bg-[#FFF4D2] border-[5px] border-[#634C32] shadow-[0_3px_0_#B38600] text-[#806000]"
+             : "bg-[#FFF4D2] border-[3px] border-[#D9A300] shadow-[0_3px_0_#B38600] text-[#806000]"
+           : `${enemy ? "bg-[#FFF4D2]" : "bg-[#FFFFFF]"} border-[3px] border-[#634C32] shadow-[0_3px_0_#D0B99B]`
        }
        ${enemy ? "rotate-180" : ""} 
-       ${selected ? `scale-[1.15] z-10 box-shadow-xl ${type === "K" ? "border-[#FF5A5A]" : "border-[#FF5A5A]"}` : "hover:scale-105 cursor-pointer z-0"}`}
+       ${selected ? `scale-[1.15] z-10 box-shadow-xl border-[#FF5A5A]` : "hover:scale-105 cursor-pointer z-0"}`}
     >
       <span
         className={`${type === "K" ? "text-[24px] md:text-[32px]" : "text-[20px] md:text-[28px]"} leading-none drop-shadow-sm`}
@@ -353,6 +364,24 @@ export default function App() {
   }>({ type: "P", enemy: false });
 
   const [puzzles, setPuzzles] = useState<Problem[]>(defaultPuzzles as Problem[]);
+  const [totalMistakes, setTotalMistakes] = useState(0);
+  const [timerSeconds, setTimerSeconds] = useState<number | null>(null);
+  const [timerActive, setTimerActive] = useState<boolean>(false);
+  const [showTimeUp, setShowTimeUp] = useState<boolean>(false);
+
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+    if (timerActive && timerSeconds !== null && timerSeconds > 0) {
+      interval = setInterval(() => {
+        setTimerSeconds((prev) => (prev !== null ? prev - 1 : null));
+      }, 1000);
+    } else if (timerActive && timerSeconds === 0) {
+      setTimerActive(false);
+      setShowTimeUp(true);
+      setTimeout(() => setShowTimeUp(false), 3000);
+    }
+    return () => clearInterval(interval);
+  }, [timerActive, timerSeconds]);
 
   useEffect(() => {
     fetch("/api/save-puzzles", {
@@ -563,6 +592,135 @@ export default function App() {
     }
   }, [selected, board]);
 
+  const [pendingPromotion, setPendingPromotion] = useState<{
+    from: string;
+    to: string;
+    handIdx?: number;
+    pieceType: PieceType;
+    isPromotionZone: boolean;
+  } | null>(null);
+
+  const executeMove = (
+    from: string | null,
+    to: string,
+    handIdx: number | undefined,
+    finalPieceType: PieceType
+  ) => {
+    const tempBoard = { ...board };
+    if (from) {
+      delete tempBoard[from];
+    }
+    tempBoard[to] = { type: finalPieceType, enemy: false };
+
+    const isSelfCheck = isKingInCheck(tempBoard, false);
+    if (isSelfCheck) {
+      setTotalMistakes((prev) => prev + 1);
+      setErrorMsg("王手されてるにゃ！");
+      setSelected(null);
+      setTimeout(() => setErrorMsg(null), 1500);
+      return;
+    }
+
+    const isCheck = isKingInCheck(tempBoard, true);
+    const enemyReplies = getLegalMoves(tempBoard, true);
+    const isCheckmate = isCheck && enemyReplies.length === 0;
+
+    if (isCheckmate) {
+      const newBoard = { ...board };
+      if (from) {
+        delete newBoard[from];
+      } else if (handIdx !== undefined) {
+        const newHand = [...hand];
+        newHand.splice(handIdx, 1);
+        setHand(newHand);
+      }
+      newBoard[to] = { type: finalPieceType, enemy: false };
+      setBoard(newBoard);
+
+      confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
+      setSolved(true);
+      setErrorMsg(null);
+      setSelected(null);
+    } else {
+      const tBoard = { ...board };
+      if (from) {
+        delete tBoard[from];
+      } else if (handIdx !== undefined) {
+        const newHand = [...hand];
+        newHand.splice(handIdx, 1);
+        setHand(newHand);
+      }
+      tBoard[to] = { type: finalPieceType, enemy: false };
+      setBoard(tBoard);
+      setSelected(null);
+      setAnimating(true);
+
+      if (!isCheck) {
+        setTimeout(() => {
+          setTotalMistakes((prev) => prev + 1);
+          setErrorMsg("王手じゃないにゃ...");
+          setTimeout(() => {
+            setBoard(currentPuzzle.board);
+            setHand(currentPuzzle.hand);
+            setErrorMsg(null);
+            setAnimating(false);
+          }, 1000);
+        }, 400);
+        return;
+      }
+
+      setTimeout(() => {
+        const replies = enemyReplies;
+        if (replies.length > 0) {
+          let reply = replies.find(
+            (rep) =>
+              rep.to === to &&
+              rep.from !== "hand" &&
+              tBoard[rep.from]?.type !== "K",
+          );
+          if (!reply) {
+            reply = replies.find((rep) => rep.to === to);
+          }
+          if (!reply) {
+            reply = replies.find(
+              (rep) => rep.from !== "hand" && tBoard[rep.from].type === "K",
+            );
+          }
+          if (!reply) {
+            reply = replies.find((rep) => rep.from !== "hand");
+          }
+          if (!reply) {
+            reply = replies.find((rep) => rep.from === "hand");
+          }
+          if (!reply) {
+            reply = replies[0];
+          }
+
+          const nextBoard = { ...tBoard };
+          if (reply.from === "hand") {
+            nextBoard[reply.to] = { type: "P", enemy: true };
+          } else {
+            const p = nextBoard[reply.from];
+            delete nextBoard[reply.from];
+            nextBoard[reply.to] = p;
+          }
+          setBoard(nextBoard);
+        }
+
+        setTimeout(() => {
+          setTotalMistakes((prev) => prev + 1);
+          setErrorMsg("防がれたにゃ...");
+          setTimeout(() => {
+            setBoard(currentPuzzle.board);
+            setHand(currentPuzzle.hand);
+            setErrorMsg(null);
+            setAnimating(false);
+          }, 1000);
+        }, 600);
+      }, 600);
+    }
+  };
+
   const handleCellClick = (c: number, r: number) => {
     if (animating) return;
 
@@ -603,141 +761,22 @@ export default function App() {
         return;
       }
 
-      const unpromotedToPromoted: Record<string, string> = {
-        P: "PP",
-        L: "PL",
-        N: "PN",
-        S: "PS",
-        B: "PB",
-        R: "PR",
-      };
-
-      let finalPieceType = selected.pieceType;
-      if (selected.from) {
+      if (selected.from && unpromotedToPromoted[selected.pieceType]) {
         const fromR = parseInt(selected.from.split(",")[1]);
         const toR = r;
-        if ((fromR === 0 || toR === 0) && unpromotedToPromoted[selected.pieceType]) {
-          const promoteRequired = (selected.pieceType === "P" || selected.pieceType === "L") && toR === 0;
-          if (promoteRequired) {
-            finalPieceType = unpromotedToPromoted[selected.pieceType] as PieceType;
-          } else {
-            if (window.confirm("成りますか？")) {
-              finalPieceType = unpromotedToPromoted[selected.pieceType] as PieceType;
-            }
-          }
-        }
-      }
-
-      const tempBoard = { ...board };
-      if (selected.from) {
-        delete tempBoard[selected.from];
-      }
-      tempBoard[key] = { type: finalPieceType, enemy: false };
-
-      const isSelfCheck = isKingInCheck(tempBoard, false);
-      if (isSelfCheck) {
-        setErrorMsg("王手されてるにゃ！");
-        setSelected(null);
-        setTimeout(() => setErrorMsg(null), 1500);
+        const isPromotionZone = fromR <= 2 || toR <= 2;
+        
+        setPendingPromotion({
+          from: selected.from,
+          to: key,
+          handIdx: selected.handIdx,
+          pieceType: selected.pieceType,
+          isPromotionZone
+        });
         return;
       }
 
-      const isCheck = isKingInCheck(tempBoard, true);
-      const enemyReplies = getLegalMoves(tempBoard, true);
-      const isCheckmate = isCheck && enemyReplies.length === 0;
-
-      if (isCheckmate) {
-        const newBoard = { ...board };
-        if (selected.from) {
-          delete newBoard[selected.from];
-        } else if (selected.handIdx !== undefined) {
-          const newHand = [...hand];
-          newHand.splice(selected.handIdx, 1);
-          setHand(newHand);
-        }
-        newBoard[key] = { type: finalPieceType, enemy: false };
-        setBoard(newBoard);
-
-        confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
-        setSolved(true);
-        setErrorMsg(null);
-        setSelected(null);
-      } else {
-        const tBoard = { ...board };
-        if (selected.from) {
-          delete tBoard[selected.from];
-        } else if (selected.handIdx !== undefined) {
-          const newHand = [...hand];
-          newHand.splice(selected.handIdx, 1);
-          setHand(newHand);
-        }
-        tBoard[key] = { type: finalPieceType, enemy: false };
-        setBoard(tBoard);
-        setSelected(null);
-        setAnimating(true);
-
-        if (!isCheck) {
-          setTimeout(() => {
-            setErrorMsg("王手じゃないにゃ...");
-            setTimeout(() => {
-              setBoard(currentPuzzle.board);
-              setHand(currentPuzzle.hand);
-              setErrorMsg(null);
-              setAnimating(false);
-            }, 1000);
-          }, 400);
-          return;
-        }
-
-        setTimeout(() => {
-          const replies = enemyReplies;
-          if (replies.length > 0) {
-            let reply = replies.find(
-              (rep) =>
-                rep.to === key &&
-                rep.from !== "hand" &&
-                tBoard[rep.from]?.type !== "K",
-            );
-            if (!reply) {
-              reply = replies.find((rep) => rep.to === key);
-            }
-            if (!reply) {
-              reply = replies.find(
-                (rep) => rep.from !== "hand" && tBoard[rep.from].type === "K",
-              );
-            }
-            if (!reply) {
-              reply = replies.find((rep) => rep.from !== "hand");
-            }
-            if (!reply) {
-              reply = replies.find((rep) => rep.from === "hand");
-            }
-            if (!reply) {
-              reply = replies[0];
-            }
-
-            const nextBoard = { ...tBoard };
-            if (reply.from === "hand") {
-              nextBoard[reply.to] = { type: "P", enemy: true };
-            } else {
-              const p = nextBoard[reply.from];
-              delete nextBoard[reply.from];
-              nextBoard[reply.to] = p;
-            }
-            setBoard(nextBoard);
-          }
-
-          setTimeout(() => {
-            setErrorMsg("防がれたにゃ...");
-            setTimeout(() => {
-              setBoard(currentPuzzle.board);
-              setHand(currentPuzzle.hand);
-              setErrorMsg(null);
-              setAnimating(false);
-            }, 1000);
-          }, 600);
-        }, 600);
-      }
+      executeMove(selected.from, key, selected.handIdx, selected.pieceType);
     } else {
       const p = board[key];
       if (p && !p.enemy) {
@@ -770,6 +809,20 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[radial-gradient(circle_at_top_right,#FFF0C1_0%,#FFF9E6_50%)] bg-[#FFF9E6] flex flex-col items-center justify-center p-4 md:p-8 font-sans overflow-hidden">
+      <AnimatePresence>
+        {showTimeUp && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none bg-black/20"
+          >
+            <div className="bg-white px-10 py-6 rounded-3xl shadow-2xl border-4 border-[#FF5A5A] text-[#FF5A5A] text-5xl md:text-7xl font-bold transform -rotate-6">
+              終了！
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
       <AnimatePresence mode="wait">
         {!started ? (
           <motion.div
@@ -791,7 +844,7 @@ export default function App() {
               <br />
               １手詰に挑戦しよう！
               <br />
-              全10問！
+              全{puzzles.length}問！
             </p>
             <button
               onClick={() => setStarted(true)}
@@ -853,6 +906,59 @@ export default function App() {
                   )}
                 </div>
 
+                <AnimatePresence>
+                  {pendingPromotion && (
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.9, y: 10 }}
+                      animate={{ opacity: 1, scale: 1, y: 0 }}
+                      exit={{ opacity: 0, scale: 0.9, y: 10 }}
+                      className="absolute bottom-4 left-1/2 -translate-x-1/2 z-50 flex items-center justify-center pointer-events-none w-full"
+                    >
+                      <div className="bg-white/85 p-4 rounded-3xl shadow-xl border-4 border-[#FFADAD]/80 flex flex-col items-center gap-3 backdrop-blur-md pointer-events-auto w-[90%] max-w-[300px]">
+                        <p className="text-lg font-bold text-[#634C32]">成りますか？</p>
+                        <div className="flex gap-4 w-full px-2">
+                          <button
+                            onClick={() => {
+                              const { from, to, pieceType, isPromotionZone, handIdx } = pendingPromotion;
+                              setPendingPromotion(null);
+                              if (isPromotionZone) {
+                                executeMove(from, to, handIdx, unpromotedToPromoted[pieceType] as PieceType);
+                              } else {
+                                setTotalMistakes((prev) => prev + 1);
+                                setErrorMsg("そこでは成れないにゃ！");
+                                setSelected(null);
+                                setTimeout(() => setErrorMsg(null), 1500);
+                              }
+                            }}
+                            className="flex-1 py-2.5 bg-[#FF5A5A]/90 text-white font-bold rounded-xl shadow-[0_3px_0_rgba(209,61,61,0.9)] active:translate-y-[3px] active:shadow-none transition-all hover:bg-[#ff7070] text-base"
+                          >
+                            はい
+                          </button>
+                          <button
+                            onClick={() => {
+                              const { from, to, pieceType, handIdx } = pendingPromotion;
+                              setPendingPromotion(null);
+                              const toR = parseInt(to.split(",")[1]);
+                              const mustPromote = (pieceType === "P" || pieceType === "L") && toR === 0 || (pieceType === "N" && toR <= 1);
+                              if (mustPromote) {
+                                setTotalMistakes((prev) => prev + 1);
+                                setErrorMsg("そこはならなきゃいけないにゃ！");
+                                setSelected(null);
+                                setTimeout(() => setErrorMsg(null), 1500);
+                              } else {
+                                executeMove(from, to, handIdx, pieceType);
+                              }
+                            }}
+                            className="flex-1 py-2.5 bg-[#4A7A4A]/90 text-white font-bold rounded-xl shadow-[0_3px_0_rgba(54,94,54,0.9)] active:translate-y-[3px] active:shadow-none transition-all hover:bg-[#5b945b] text-base"
+                          >
+                            いいえ
+                          </button>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
                 {/* Board */}
                 <div className="grid grid-cols-5 grid-rows-5 gap-[4px] md:gap-[8px] bg-[#C3A16A] p-[8px] md:p-[12px] rounded-[16px] shadow-[inset_0_4px_8px_rgba(0,0,0,0.15)] w-full max-w-[360px] aspect-square mx-auto">
                   {Array.from({ length: 25 }).map((_, i) => {
@@ -892,108 +998,156 @@ export default function App() {
 
                 {/* Hand Area */}
                 <div className="mt-6 flex flex-col gap-2">
-                  <h3 className="font-bold text-[#634C32] flex items-center gap-2 ml-1">
-                    持ち駒
-                  </h3>
-                  <div className="flex flex-wrap gap-2 min-h-[72px] bg-[#FFEEDD] p-3 border-[3px] border-dashed border-[#F8D38D] rounded-[24px]">
-                    {hand.length === 0 && !solved && (
-                      <div className="text-[#634C32]/40 font-bold m-auto">
-                        なし
+                  <div className="flex items-center ml-1 relative">
+                    <h3 className="font-bold text-[#634C32] flex items-center gap-2">
+                      持ち駒
+                    </h3>
+                    {timerActive && timerSeconds !== null && timerSeconds > 0 && (
+                      <div className="absolute left-1/2 -translate-x-1/2 flex items-center justify-center">
+                        <div className="text-xl px-4 py-0.5 font-bold rounded-xl border-2 border-[#FFADAD] text-[#FF5A5A] bg-white">
+                          {Math.floor(timerSeconds / 60)}:{(timerSeconds % 60).toString().padStart(2, '0')}
+                        </div>
                       </div>
                     )}
-                    {hand.map((p, idx) => {
-                      const isSelected = selected?.handIdx === idx;
-                      return (
-                        <div
-                          key={idx}
-                          className="w-[60px] aspect-square flex items-center justify-center p-0.5"
-                          onClick={() => handleHandClick(idx, p)}
+                    <div className="ml-auto">
+                      {!timerActive ? (
+                        <button
+                          onClick={() => {
+                            setTimerSeconds(300);
+                            setTimerActive(true);
+                          }}
+                          className="text-xs px-3 py-1 font-bold rounded-lg border-2 bg-white border-[#FF5A5A] text-[#FF5A5A] hover:bg-[#FFDEDE] transition-all"
                         >
-                          <PieceView
-                            type={p}
-                            enemy={false}
-                            selected={isSelected}
-                          />
-                        </div>
-                      );
-                    })}
+                          ５分タイマー
+                        </button>
+                      ) : (
+                        <button
+                          onClick={() => {
+                            setTimerActive(false);
+                            setTimerSeconds(null);
+                          }}
+                          className="text-xs px-3 py-1 font-bold rounded-lg border-2 bg-white border-[#FF5A5A] text-[#FF5A5A] hover:bg-[#FFDEDE] transition-all"
+                        >
+                          タイマー停止
+                        </button>
+                      )}
+                    </div>
                   </div>
+                  {!solved ? (
+                    <div className="flex flex-wrap gap-2 min-h-[90px] bg-[#FFEEDD] p-3 border-[3px] border-dashed border-[#F8D38D] rounded-[24px]">
+                      {hand.length === 0 && (
+                        <div className="text-[#634C32]/40 font-bold m-auto relative z-10">
+                          なし
+                        </div>
+                      )}
+                      {hand.map((p, idx) => {
+                        const isSelected = selected?.handIdx === idx;
+                        return (
+                          <div
+                            key={idx}
+                            className="w-[60px] aspect-square flex items-center justify-center p-0.5 relative z-10"
+                            onClick={() => handleHandClick(idx, p)}
+                          >
+                            <PieceView
+                              type={p}
+                              enemy={false}
+                              selected={isSelected}
+                            />
+                          </div>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    <div className="h-[90px]">
+                      <button
+                        onClick={nextPuzzle}
+                        className="w-full h-full bg-[#FFADAD] hover:bg-[#ff9999] text-white font-bold rounded-[24px] shadow-[0_4px_0_#e68a8a] active:shadow-[0_0px_0_#e68a8a] active:translate-y-1 transition-all flex items-center justify-center gap-2 text-lg animate-fade-in"
+                      >
+                        次の問題へ <ArrowRight />
+                      </button>
+                    </div>
+                  )}
                 </div>
-
-                {/* Next Button */}
-                {solved && (
-                  <button
-                    onClick={nextPuzzle}
-                    className="mt-6 w-full py-4 bg-[#FFADAD] hover:bg-[#ff9999] text-white font-bold rounded-2xl shadow-[0_4px_0_#e68a8a] active:shadow-[0_0px_0_#e68a8a] active:translate-y-1 transition-all flex items-center justify-center gap-2 text-lg animate-fade-in"
-                  >
-                    次の問題へ <ArrowRight />
-                  </button>
-                )}
               </div>
             </div>
 
             {/* Status Card (Right) */}
             <div className="w-full max-w-[420px] lg:w-[340px] bg-[#FFFFFF] rounded-[32px] border-[6px] border-[#FFADAD] p-5 flex flex-col gap-4 shadow-sm h-fit">
-              <div className="bg-[#FFADAD] text-white px-4 py-1 rounded-full text-sm self-start font-bold">
-                今のせいせき：{puzzleIdx}/10
+              <div className="flex flex-col gap-2">
+                <div className="bg-[#FFADAD] text-white px-4 py-1 rounded-full text-sm self-start font-bold">
+                  今のせいせき：{puzzleIdx}/{puzzles.length}
+                </div>
+                <div className="bg-[#FFDEDE] text-[#FF5A5A] px-4 py-1 rounded-full text-sm self-start font-bold border-2 border-[#FFADAD]">
+                  間違えた回数：{totalMistakes}回
+                </div>
               </div>
               <div className="w-[120px] h-[120px] bg-[#FFDEDE] rounded-[60px] mx-auto flex justify-center items-center text-6xl border-4 border-[#FFADAD] shadow-sm">
                 🐱
               </div>
-              <div className="bg-[#FFFFFF] border-[3px] border-[#634C32] p-3 rounded-2xl relative text-sm text-[#634C32] font-bold text-center mt-2 shadow-sm">
+              <div className="bg-[#FFFFFF] border-[3px] border-[#634C32] p-3 rounded-2xl relative text-sm text-[#634C32] font-bold text-center mt-2 shadow-sm min-h-[64px] flex items-center justify-center flex-col leading-snug">
                 <div className="absolute -top-[14px] left-1/2 -translate-x-1/2 w-0 h-0 border-l-[10px] border-r-[10px] border-b-[12px] border-l-transparent border-r-transparent border-b-[#634C32]"></div>
                 <div className="absolute -top-[9px] left-1/2 -translate-x-1/2 w-0 h-0 border-l-[6px] border-r-[6px] border-b-[8px] border-l-transparent border-r-transparent border-b-[#FFFFFF] z-10"></div>
                 {solved
                   ? "やったにゃ！大正解！"
-                  : "あと１手でつみだよ！\nどこに置けばいいかにゃ？"}
+                  : (
+                    <>
+                      あと１手でつみだよ！
+                      <br />
+                      どこに置けばいいかにゃ？
+                    </>
+                  )}
               </div>
 
               <div className="mt-4">
                 <div className="flex items-center justify-between mb-2">
                   <h3 className="font-bold text-[#634C32]">もんだい いちらん</h3>
                   <div className="flex gap-2">
-                    <button
-                      onClick={() => {
-                        const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(puzzles, null, 2));
-                        const downloadAnchorNode = document.createElement('a');
-                        downloadAnchorNode.setAttribute("href",     dataStr);
-                        downloadAnchorNode.setAttribute("download", "doubutsu-shogi-puzzles.json");
-                        document.body.appendChild(downloadAnchorNode); // required for firefox
-                        downloadAnchorNode.click();
-                        downloadAnchorNode.remove();
-                        alert("問題データをJSONファイルとしてダウンロードしました！\nこのファイルを使用して、別の環境で「ファイル読み込み」から復元できます。");
-                      }}
-                      className="text-xs px-3 py-1 font-bold rounded-lg border-2 bg-[#EAE8E3] border-[#CCCCCC] text-[#634C32] hover:bg-[#D9D9D9] transition-all"
-                    >
-                      データ出力
-                    </button>
-                    <input
-                      type="file"
-                      accept=".json"
-                      ref={jsonFileInputRef}
-                      className="hidden"
-                      onChange={handleJsonUpload}
-                    />
-                    <button
-                      onClick={() => jsonFileInputRef.current?.click()}
-                      className="text-xs px-3 py-1 font-bold rounded-lg border-2 bg-[#E1F5FE] border-[#0288D1] text-[#01579B] hover:bg-[#B3E5FC] transition-all"
-                    >
-                      ファイル読み込み
-                    </button>
-                    <input
-                      type="file"
-                      accept="application/pdf"
-                      ref={fileInputRef}
-                      className="hidden"
-                      onChange={handleFileUpload}
-                     />
-                    <button
-                      onClick={() => fileInputRef.current?.click()}
-                      disabled={isImporting}
-                      className={`text-xs px-3 py-1 font-bold rounded-lg border-2 transition-all ${isImporting ? "bg-gray-200 border-gray-300 text-gray-500 cursor-not-allowed" : "bg-[#FFF4D2] border-[#D9A300] text-[#806000] hover:bg-[#ffeaaa]"}`}
-                    >
-                      {isImporting ? "読み込み中..." : "PDFから追加"}
-                    </button>
+                    {isEditMode && (
+                      <>
+                        <button
+                          onClick={() => {
+                            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(puzzles, null, 2));
+                            const downloadAnchorNode = document.createElement('a');
+                            downloadAnchorNode.setAttribute("href",     dataStr);
+                            downloadAnchorNode.setAttribute("download", "doubutsu-shogi-puzzles.json");
+                            document.body.appendChild(downloadAnchorNode); // required for firefox
+                            downloadAnchorNode.click();
+                            downloadAnchorNode.remove();
+                            alert("問題データをJSONファイルとしてダウンロードしました！\nこのファイルを使用して、別の環境で「ファイル読み込み」から復元できます。");
+                          }}
+                          className="text-xs px-3 py-1 font-bold rounded-lg border-2 bg-[#EAE8E3] border-[#CCCCCC] text-[#634C32] hover:bg-[#D9D9D9] transition-all"
+                        >
+                          データ出力
+                        </button>
+                        <input
+                          type="file"
+                          accept=".json"
+                          ref={jsonFileInputRef}
+                          className="hidden"
+                          onChange={handleJsonUpload}
+                        />
+                        <button
+                          onClick={() => jsonFileInputRef.current?.click()}
+                          className="text-xs px-3 py-1 font-bold rounded-lg border-2 bg-[#E1F5FE] border-[#0288D1] text-[#01579B] hover:bg-[#B3E5FC] transition-all"
+                        >
+                          ファイル読み込み
+                        </button>
+                        <input
+                          type="file"
+                          accept="application/pdf"
+                          ref={fileInputRef}
+                          className="hidden"
+                          onChange={handleFileUpload}
+                         />
+                        <button
+                          onClick={() => fileInputRef.current?.click()}
+                          disabled={isImporting}
+                          className={`text-xs px-3 py-1 font-bold rounded-lg border-2 transition-all ${isImporting ? "bg-gray-200 border-gray-300 text-gray-500 cursor-not-allowed" : "bg-[#FFF4D2] border-[#D9A300] text-[#806000] hover:bg-[#ffeaaa]"}`}
+                        >
+                          {isImporting ? "読み込み中..." : "PDFから追加"}
+                        </button>
+                      </>
+                    )}
                   </div>
                 </div>
                 <div className="grid grid-cols-5 gap-2">
@@ -1172,7 +1326,7 @@ export default function App() {
                             <div className="w-[80%] h-[80%] relative pointer-events-none">
                               <PieceView
                                 type={pt as any}
-                                enemy={pt !== "delete" && editPieceInfo.enemy}
+                                enemy={(pt as string) !== "delete" ? editPieceInfo.enemy : false}
                                 selected={false}
                               />
                             </div>
